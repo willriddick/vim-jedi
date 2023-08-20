@@ -1,0 +1,22 @@
+<main>
+    <mat-toolbar class="settings">
+        <mat-toolbar-row>
+            <button *ngFor="let setting of this.commandService.settings, let i = index" 
+                [class]="setting.style"
+                (click)="this.changeSetting(i)">
+                {{setting.name}}
+            </button>
+        </mat-toolbar-row>
+    </mat-toolbar>
+
+    <div class = "card score-question">
+        <h1>{{question}}</h1>
+        <h2>Score: {{score}}</h2>
+        <h2>Timer: {{timer}}</h2>
+    </div>  
+
+    <div class = "card">  
+        <h2 *ngIf="waiting" class = "waiting">{{waiting_text}}</h2>
+        <h2 *ngIf="!waiting">{{input_string}}</h2>
+    </div>
+</main>

@@ -1,0 +1,43 @@
+html, body { 
+  margin: 0;
+  height: 100%; 
+  font-family: 'Roboto Mono', monospace;
+  color: white;
+  background-color: #232525;
+}
+
+.button-1 {
+  background-color: #ffffff00;
+  text-align: center;
+  border-radius: 4px;
+  border-style: none;
+  color: #7a7a7a;
+  cursor: pointer;
+  display: inline-block;
+  padding-top: 5%;
+  padding-bottom: 5%;
+  text-align: center;
+
+  transform: translate3d(0, 0, 0);
+  transition: all .3s;
+  touch-action: manipulation;
+}
+
+.button-1:hover {
+  color: #fff;
+  transform: translateY(-2px);
+  transition-duration: .3s;
+}
+
+.button-1:active {
+  transform: translateY(1px);
+  transition-duration: .1s;
+}
+
+.button-toggle {
+  text-decoration: underline;
+}
+
+.button-routing-active {
+  text-decoration: underline;
+}

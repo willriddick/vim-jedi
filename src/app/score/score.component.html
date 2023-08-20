@@ -1,0 +1,12 @@
+<main>
+    <div class = "card">
+        <h1>Final Score: {{this.commandService.getScore()}}</h1>
+        <br>
+        <h2>Settings Applied:</h2>
+        <p *ngFor="let setting of this.commandService.getActiveSettings()">
+            {{setting}}
+        </p>
+        <br>
+        <h2>Press <em>Enter</em> to Restart</h2>
+    </div>  
+</main>

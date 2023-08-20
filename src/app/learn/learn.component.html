@@ -1,0 +1,19 @@
+<main>
+    <mat-toolbar class="settings">
+        <mat-toolbar-row>
+            <button *ngFor="let setting of this.commandService.settings, let i = index" 
+                [class]="setting.style"
+                (click)="changeSetting(i)">
+                {{setting.name}}
+            </button>
+        </mat-toolbar-row>
+    </mat-toolbar>
+
+    <div class="card">
+        <div>
+        <p *ngFor="let command of commands">
+            <b>{{command.getAnswer()}} </b>= <em>{{command.getQuestion()}}</em>
+        </p>
+        </div>
+    </div>
+</main>  

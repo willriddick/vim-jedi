@@ -1,0 +1,14 @@
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 80%;
+    overflow: hidden;
+}
+
+iframe {
+    margin-top: 20px;
+    width: 1280px;
+    height: 720px;
+}

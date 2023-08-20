@@ -1,0 +1,12 @@
+<header>
+    <div><ul>
+        <li class="title">Vim Jedi</li>
+        <li *ngFor="let link of links">
+            <button [routerLink]="link.path"
+                class="button-1"
+                routerLinkActive="button-routing-active">
+                {{link.name}}
+        </button>
+        </li>
+    </ul></div>
+</header>
