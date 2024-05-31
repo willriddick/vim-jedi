@@ -19,10 +19,17 @@ export class CommandService {
 
   private set_size: number = 0;
 
+  private previous_index: number = -1;
+
   public category_set = [
-    { name: "general", enabled: false },
-    { name: "movement", enabled: false },
-    { name: "editing", enabled: false }
+    { name: "Global", enabled: false },
+    { name: "Cursor Movement", enabled: false },
+    { name: "Insert Mode", enabled: false },
+    { name: "Editing", enabled: false },
+    { name: "Marking Text", enabled: false },
+    { name: "Registers", enabled: false },
+    { name: "Cut and Paste", enabled: false },
+    { name: "Macros", enabled: false }
   ]
 
   constructor(private http: HttpClient) {
@@ -56,13 +63,20 @@ export class CommandService {
     }
   }
 
+  getRandomNumber(max: number): number {
+    return Math.floor(Math.random() * max);
+  }
+
   getRandomCommand(): Command {
     // Grab the first command defined as a placeholder value
     let newCommand: Command = this.command_dictionary.sets[0].commands[0];
 
-    // Get random index
-    let index: number = Math.floor(Math.random() * this.set_size);
-    console.log(`Index: ${index}`);
+    // Get random index, making sure not to get the previous one
+    let index: number = this.getRandomNumber(this.set_size);
+    while (index === this.previous_index) {
+      index = this.getRandomNumber(this.set_size);
+    }
+    this.previous_index = index;
 
     // Loop through our category set to find index
     for (let i = 0; index > 0 && i < this.category_set.length; i++) {
@@ -85,5 +99,9 @@ export class CommandService {
       }
     }
     return newCommand;
+  }
+
+  getCommands(category: Category): Command[] {
+    return this.command_dictionary.sets[category].commands 
   }
 }

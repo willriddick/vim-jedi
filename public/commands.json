@@ -1,68 +1,163 @@
 {
-"sets": [
+  "sets": [
     {
-        "name": "general",
-        "commands": [
-            { "command": [":q"], "description": "Quit the current file" },
-            { "command": [":w"], "description": "Save the current file" },
-            { "command": [":wq"], "description": "Save the current file and quit Vim" },
-            { "command": [":q!"], "description": "Quit Vim without saving" },
-            { "command": [":e filename"], "description": "Open a file" },
-            { "command": [":x", ":wq"], "description": "Save and quit" },
-            { "command": [":set number"], "description": "Show line numbers" },
-            { "command": [":set nonumber"], "description": "Hide line numbers" },
-            { "command": [":w filename"], "description": "Save the current file with a new name" },
-            { "command": [":bnext"], "description": "Go to the next buffer" },
-            { "command": [":bprev"], "description": "Go to the previous buffer" },
-            { "command": [":bd"], "description": "Delete the current buffer" },
-            { "command": [":sp filename"], "description": "Open a file in a new horizontal split" },
-            { "command": [":vsp filename"], "description": "Open a file in a new vertical split" },
-            { "command": [":help"], "description": "Open Vim help" },
-            { "command": [":help subject"], "description": "Open help for a specific subject" },
-            { "command": [":tabnew filename"], "description": "Open a file in a new tab" },
-            { "command": [":tabnext"], "description": "Go to the next tab" },
-            { "command": [":tabprev"], "description": "Go to the previous tab" },
-            { "command": [":tabclose"], "description": "Close the current tab" }
-        ]
+      "name": "global",
+      "commands": [
+        { "command": [":h keyword", ":help keyword"], "description": "Open help for keyword" },
+        { "command": [":sav file", ":saveas file"], "description": "Save file as" },
+        { "command": [":clo", ":close"], "description": "Close current pane" },
+        { "command": [":ter", ":terminal"], "description": "Open a terminal window" },
+        { "command": ["K"], "description": "Open man page for word under the cursor" },
+        { "command": ["vimtutor"], "description": "Run vimtutor to learn the first Vim commands" }
+      ]
     },
     {
-        "name": "movement",
-        "commands": [
-            { "command": ["k"], "description": "Move up" },
-            { "command": ["j"], "description": "Move down" },
-            { "command": ["h"], "description": "Move left" },
-            { "command": ["l"], "description": "Move right" },
-            { "command": ["gg"], "description": "Go to the first line of the file" },
-            { "command": ["G"], "description": "Go to the last line of the file" },
-            { "command": ["0"], "description": "Go to the beginning of the line" },
-            { "command": ["$"], "description": "Go to the end of the line" },
-            { "command": ["ctrl + w h"], "description": "Move to the split on the left" },
-            { "command": ["ctrl + w l"], "description": "Move to the split on the right" },
-            { "command": ["ctrl + w j"], "description": "Move to the split below" },
-            { "command": ["ctrl + w k"], "description": "Move to the split above" }
-        ]
+      "name": "cursor_movement",
+      "commands": [
+        { "command": ["h"], "description": "Move cursor left" },
+        { "command": ["j"], "description": "Move cursor down" },
+        { "command": ["k"], "description": "Move cursor up" },
+        { "command": ["l"], "description": "Move cursor right" },
+        { "command": ["gj"], "description": "Move cursor down (multi-line text)" },
+        { "command": ["gk"], "description": "Move cursor up (multi-line text)" },
+        { "command": ["H"], "description": "Move to top of screen" },
+        { "command": ["M"], "description": "Move to middle of screen" },
+        { "command": ["L"], "description": "Move to bottom of screen" },
+        { "command": ["w"], "description": "Jump forwards to the start of a word" },
+        { "command": ["W"], "description": "Jump forwards to the start of a word (words can contain punctuation)" },
+        { "command": ["e"], "description": "Jump forwards to the end of a word" },
+        { "command": ["E"], "description": "Jump forwards to the end of a word (words can contain punctuation)" },
+        { "command": ["b"], "description": "Jump backwards to the start of a word" },
+        { "command": ["B"], "description": "Jump backwards to the start of a word (words can contain punctuation)" },
+        { "command": ["ge"], "description": "Jump backwards to the end of a word" },
+        { "command": ["gE"], "description": "Jump backwards to the end of a word (words can contain punctuation)" },
+        { "command": ["%"], "description": "Move cursor to matching character" },
+        { "command": ["0"], "description": "Jump to the start of the line" },
+        { "command": ["^"], "description": "Jump to the first non-blank character of the line" },
+        { "command": ["$"], "description": "Jump to the end of the line" },
+        { "command": ["g_"], "description": "Jump to the last non-blank character of the line" },
+        { "command": ["gg"], "description": "Go to the first line of the document" },
+        { "command": ["G"], "description": "Go to the last line of the document" },
+        { "command": ["5gg", "5G"], "description": "Go to line 5" },
+        { "command": ["gd"], "description": "Move to local declaration" },
+        { "command": ["gD"], "description": "Move to global declaration" },
+        { "command": ["fx"], "description": "Jump to next occurrence of character x" },
+        { "command": ["tx"], "description": "Jump to before next occurrence of character x" },
+        { "command": ["Fx"], "description": "Jump to the previous occurrence of character x" },
+        { "command": ["Tx"], "description": "Jump to after previous occurrence of character x" },
+        { "command": [";"], "description": "Repeat previous f, t, F or T movement" },
+        { "command": [","], "description": "Repeat previous f, t, F or T movement, backwards" },
+        { "command": ["}"], "description": "Jump to next paragraph (or function/block, when editing code)" },
+        { "command": ["{"], "description": "Jump to previous paragraph (or function/block, when editing code)" },
+        { "command": ["zz"], "description": "Center cursor on screen" },
+        { "command": ["zt"], "description": "Position cursor on top of the screen" },
+        { "command": ["zb"], "description": "Position cursor on bottom of the screen" },
+        { "command": ["Ctrl + e"], "description": "Move screen down one line (without moving cursor)" },
+        { "command": ["Ctrl + y"], "description": "Move screen up one line (without moving cursor)" },
+        { "command": ["Ctrl + b"], "description": "Move screen up one page (cursor to last line)" },
+        { "command": ["Ctrl + f"], "description": "Move screen down one page (cursor to first line)" },
+        { "command": ["Ctrl + d"], "description": "Move cursor and screen down 1/2 page" },
+        { "command": ["Ctrl + u"], "description": "Move cursor and screen up 1/2 page" }
+      ]
     },
     {
-        "name": "editing",
-        "commands": [
-            { "command": ["i"], "description": "Enter insert mode" },
-            { "command": ["esc"], "description": "Exit insert mode" },
-            { "command": ["dd"], "description": "Delete the current line" },
-            { "command": ["yy"], "description": "Copy the current line" },
-            { "command": ["p"], "description": "Paste the copied line" },
-            { "command": ["u"], "description": "Undo the last action" },
-            { "command": ["ctrl + r"], "description": "Redo the last undone action" },
-            { "command": ["/pattern"], "description": "Search for a pattern in the file" },
-            { "command": ["n"], "description": "Repeat the last search forward" },
-            { "command": ["N"], "description": "Repeat the last search backward" },
-            { "command": [":s/old/new/g"], "description": "Replace all occurrences of 'old' with 'new' in the current line" },
-            { "command": [":%s/old/new/g"], "description": "Replace all occurrences of 'old' with 'new' in the entire file" },
-            { "command": ["v"], "description": "Enter visual mode" },
-            { "command": ["V"], "description": "Enter visual line mode" },
-            { "command": ["ctrl + v"], "description": "Enter visual block mode" },
-            { "command": [":m .+1"], "description": "Move the current line down" },
-            { "command": [":m .-2"], "description": "Move the current line up" }
-        ]
+      "name": "insert_mode",
+      "commands": [
+        { "command": ["i"], "description": "Insert before the cursor" },
+        { "command": ["I"], "description": "Insert at the beginning of the line" },
+        { "command": ["a"], "description": "Insert (append) after the cursor" },
+        { "command": ["A"], "description": "Insert (append) at the end of the line" },
+        { "command": ["o"], "description": "Append (open) a new line below the current line" },
+        { "command": ["O"], "description": "Append (open) a new line above the current line" },
+        { "command": ["ea"], "description": "Insert (append) at the end of the word" },
+        { "command": ["Ctrl + h"], "description": "Delete the character before the cursor during insert mode" },
+        { "command": ["Ctrl + w"], "description": "Delete word before the cursor during insert mode" },
+        { "command": ["Ctrl + j"], "description": "Add a line break at the cursor position during insert mode" },
+        { "command": ["Ctrl + t"], "description": "Indent (move right) line one shiftwidth during insert mode" },
+        { "command": ["Ctrl + d"], "description": "De-indent (move left) line one shiftwidth during insert mode" },
+        { "command": ["Ctrl + n"], "description": "Insert (auto-complete) next match before the cursor during insert mode" },
+        { "command": ["Ctrl + p"], "description": "Insert (auto-complete) previous match before the cursor during insert mode" },
+        { "command": ["Ctrl + rx"], "description": "Insert the contents of register x" },
+        { "command": ["Ctrl + ox"], "description": "Temporarily enter normal mode to issue one normal-mode command x" },
+        { "command": ["Esc", "Ctrl + c"], "description": "Exit insert mode" }
+      ]
+    },
+    {
+      "name": "editing",
+      "commands": [
+        { "command": ["r"], "description": "Replace a single character" },
+        { "command": ["R"], "description": "Replace more than one character, until ESC is pressed" },
+        { "command": ["J"], "description": "Join line below to the current one with one space in between" },
+        { "command": ["gJ"], "description": "Join line below to the current one without space in between" },
+        { "command": ["gwip"], "description": "Reflow paragraph" },
+        { "command": ["g~"], "description": "Switch case up to motion" },
+        { "command": ["gu"], "description": "Change to lowercase up to motion" },
+        { "command": ["gU"], "description": "Change to uppercase up to motion" },
+        { "command": ["cc"], "description": "Change (replace) entire line" },
+        { "command": ["c$","C"], "description": "Change (replace) to the end of the line" },
+        { "command": ["ciw"], "description": "Change (replace) entire word" },
+        { "command": ["cw", "ce"], "description": "Change (replace) to the end of the word" },
+        { "command": ["s"], "description": "Delete character and substitute text (same as cl)" },
+        { "command": ["S"], "description": "Delete line and substitute text (same as cc)" },
+        { "command": ["xp"], "description": "Transpose two letters (delete and paste)" },
+        { "command": ["u"], "description": "Undo" },
+        { "command": ["U"], "description": "Restore (undo) last changed line" },
+        { "command": ["Ctrl + r"], "description": "Redo" },
+        { "command": ["."], "description": "Repeat last command" }
+      ]
+    },
+    {
+      "name": "marking_text",
+      "commands": [
+        { "command": ["v"], "description": "Start visual mode, mark lines, then do a command (like y-yank)" },
+        { "command": ["V"], "description": "Start linewise visual mode" },
+        { "command": ["o"], "description": "Move to other end of marked area" },
+        { "command": ["Ctrl + v"], "description": "Start visual block mode" },
+        { "command": ["O"], "description": "Move to other corner of block" },
+        { "command": ["aw"], "description": "Mark a word" },
+        { "command": ["ab"], "description": "A block with ()" },
+        { "command": ["aB"], "description": "A block with {}" },
+        { "command": ["ib"], "description": "Inner block with ()" },
+        { "command": ["iB"], "description": "Inner block with {}" },
+        { "command": ["Esc"], "description": "Exit visual mode" }
+      ]
+    },
+    {
+      "name": "registers",
+      "commands": [
+        { "command": ["\"xy"], "description": "Yank into register x" },
+        { "command": ["\"xp"], "description": "Paste contents of register x" },
+        { "command": ["\":reg"], "description": "Show contents of all registers" }
+      ]
+    },
+    {
+      "name": "cut_and_paste",
+      "commands": [
+        { "command": ["yy", "Y"], "description": "Yank (copy) a line" },
+        { "command": ["2yy"], "description": "Yank (copy) 2 lines" },
+        { "command": ["yw"], "description": "Yank (copy) to end of word" },
+        { "command": ["y$"], "description": "Yank (copy) to end of line" },
+        { "command": ["p"], "description": "Put (paste) the clipboard after cursor" },
+        { "command": ["P"], "description": "Put (paste) before cursor" },
+        { "command": ["dd"], "description": "Delete (cut) a line" },
+        { "command": ["2dd"], "description": "Delete (cut) 2 lines" },
+        { "command": ["dw"], "description": "Delete (cut) to end of word" },
+        { "command": ["D"], "description": "Delete (cut) to end of line" },
+        { "command": ["d$"], "description": "Delete (cut) to end of line" },
+        { "command": ["x"], "description": "Delete (cut) character" },
+        { "command": ["y"], "description": "Yank (copy) marked text" },
+        { "command": ["d"], "description": "Delete (cut) marked text" },
+        { "command": ["~"], "description": "Switch case" }
+      ]
+    },
+    {
+      "name": "macros",
+      "commands": [
+        { "command": ["qa"], "description": "Record macro a" },
+        { "command": ["q"], "description": "Stop recording macro" },
+        { "command": ["@a"], "description": "Run macro a" },
+        { "command": ["@@"], "description": "Run last run macro" }
+      ]
     }
-]
+  ]
 }

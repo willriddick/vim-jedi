@@ -1,0 +1,8 @@
+<div class="command-container">
+  <div class="commands">
+    @for (cmd of command.command; track command.description) {
+        <span class="command">{{ cmd }}</span>
+    }
+  </div>
+  <div class="description">{{ command.description }}</div>
+</div>

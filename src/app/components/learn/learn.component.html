@@ -1,1 +1,11 @@
-<p>learn works!</p>
+@for (category of this.commandService.category_set; track category.name) {
+    <app-button 
+        text="{{ category.name }}" 
+        color="{{ this.selected === $index ? enabled_color : disabled_color }}" 
+        (clicked)="selectCategory($index)"
+    ></app-button>
+}
+
+@for (command of this.commandService.getCommands(selected); track command.description) {
+    <app-command [command]="command"></app-command>
+}

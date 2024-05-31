@@ -6,8 +6,8 @@
 
 @for (category of this.commandService.category_set; track category.name) {
     <app-button 
-        text="Editing" 
-        color="{{ this.commandService.categoryEnabled($index) ? enabledColor : disabledColor }}" 
+        text="{{ category.name }}" 
+        color="{{ this.commandService.categoryEnabled($index) ? enabled_color : disabled_color }}" 
         (clicked)="toggleCategory($index)"
     ></app-button>
 }
@@ -15,3 +15,5 @@
 <h1>
     {{ input_string }}
 </h1>
+
+<app-command [command]="this.current_command"></app-command>

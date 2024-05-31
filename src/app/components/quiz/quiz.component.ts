@@ -2,11 +2,12 @@ import { Component, HostListener } from '@angular/core';
 import { CommandService } from '../../services/command.service';
 import { Command } from '../../Command';
 import { ButtonComponent } from '../button/button.component';
+import { CommandComponent } from '../command/command.component';
 
 @Component({
   selector: 'app-quiz',
   standalone: true,
-  imports: [ButtonComponent],
+  imports: [ButtonComponent, CommandComponent],
   templateUrl: './quiz.component.html',
   styleUrl: './quiz.component.css'
 })
@@ -17,8 +18,8 @@ export class QuizComponent {
   input_string: string = "";
   input_array: string[] = [];
 
-  enabledColor: string = 'green';
-  disabledColor: string = 'orange';
+  enabled_color: string = 'green';
+  disabled_color: string = 'orange';
 
   constructor(public commandService: CommandService) {}
 
