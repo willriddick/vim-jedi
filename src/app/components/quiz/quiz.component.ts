@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 import { CommandService } from '../../services/command.service';
 import { Command } from '../../Command';
 import { ButtonComponent } from '../button/button.component';
@@ -12,13 +12,19 @@ import { ButtonComponent } from '../button/button.component';
 })
 export class QuizComponent {
 
-  current!: Command;
+  current_command!: Command;
+
+  input_string: string = "";
+  input_array: string[] = [];
+
+  enabledColor: string = 'green';
+  disabledColor: string = 'orange';
 
   constructor(public commandService: CommandService) {}
 
   getNext(): void {
-    this.current = this.commandService.getRandomCommand();
-    console.log(this.current);
+    this.current_command = this.commandService.getRandomCommand();
+    console.log(this.current_command);
   }
 
   toggleCategory(category: number): void {
@@ -27,6 +33,29 @@ export class QuizComponent {
     }
     else {
       this.commandService.addCategory(category);
+    }
+  }
+
+  @HostListener('document:keypress', ['$event'])
+  handleKeyboardEvent(event: KeyboardEvent) { 
+    if (event.key !== "Enter") {
+      this.input_array.push(event.key);
+      this.buildString();
+    }
+  }
+
+
+  @HostListener('document:keydown.backspace', ['$event']) 
+  onKeydownHandler(event: KeyboardEvent) {
+    this.input_array.pop();
+    this.buildString();
+  }
+
+  buildString = (): void => {
+    this.input_string = "";
+
+    for (let i = 0; i < this.input_array.length; i++) {
+      this.input_string += this.input_array[i];
     }
   }
 }
