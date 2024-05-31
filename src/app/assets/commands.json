@@ -1,0 +1,59 @@
+{
+    "general_commands": [
+        { "command": [":q"], "description": "Quit the current file" },
+        { "command": [":w"], "description": "Save the current file" },
+        { "command": [":wq"], "description": "Save the current file and quit Vim" },
+        { "command": [":q!"], "description": "Quit Vim without saving" },
+        { "command": [":e filename"], "description": "Open a file" },
+        { "command": [":x", ":wq"], "description": "Save and quit" },
+        { "command": [":set number"], "description": "Show line numbers" },
+        { "command": [":set nonumber"], "description": "Hide line numbers" },
+        { "command": [":w filename"], "description": "Save the current file with a new name" },
+        { "command": [":bnext"], "description": "Go to the next buffer" },
+        { "command": [":bprev"], "description": "Go to the previous buffer" },
+        { "command": [":bd"], "description": "Delete the current buffer" },
+        { "command": [":sp filename"], "description": "Open a file in a new horizontal split" },
+        { "command": [":vsp filename"], "description": "Open a file in a new vertical split" },
+        { "command": [":help"], "description": "Open Vim help" },
+        { "command": [":help subject"], "description": "Open help for a specific subject" },
+        { "command": [":tabnew filename"], "description": "Open a file in a new tab" },
+        { "command": [":tabnext"], "description": "Go to the next tab" },
+        { "command": [":tabprev"], "description": "Go to the previous tab" },
+        { "command": [":tabclose"], "description": "Close the current tab" }
+    ],
+
+    "movement_commands": [
+        { "command": ["k"], "description": "Move up" },
+        { "command": ["j"], "description": "Move down" },
+        { "command": ["h"], "description": "Move left" },
+        { "command": ["l"], "description": "Move right" },
+        { "command": ["gg"], "description": "Go to the first line of the file" },
+        { "command": ["G"], "description": "Go to the last line of the file" },
+        { "command": ["0"], "description": "Go to the beginning of the line" },
+        { "command": ["$"], "description": "Go to the end of the line" },
+        { "command": ["ctrl + w h"], "description": "Move to the split on the left" },
+        { "command": ["ctrl + w l"], "description": "Move to the split on the right" },
+        { "command": ["ctrl + w j"], "description": "Move to the split below" },
+        { "command": ["ctrl + w k"], "description": "Move to the split above" }
+    ],
+
+    "editing_commands": [
+        { "command": ["i"], "description": "Enter insert mode" },
+        { "command": ["esc"], "description": "Exit insert mode" },
+        { "command": ["dd"], "description": "Delete the current line" },
+        { "command": ["yy"], "description": "Copy the current line" },
+        { "command": ["p"], "description": "Paste the copied line" },
+        { "command": ["u"], "description": "Undo the last action" },
+        { "command": ["ctrl + r"], "description": "Redo the last undone action" },
+        { "command": ["/pattern"], "description": "Search for a pattern in the file" },
+        { "command": ["n"], "description": "Repeat the last search forward" },
+        { "command": ["N"], "description": "Repeat the last search backward" },
+        { "command": [":s/old/new/g"], "description": "Replace all occurrences of 'old' with 'new' in the current line" },
+        { "command": [":%s/old/new/g"], "description": "Replace all occurrences of 'old' with 'new' in the entire file" },
+        { "command": ["v"], "description": "Enter visual mode" },
+        { "command": ["V"], "description": "Enter visual line mode" },
+        { "command": ["ctrl + v"], "description": "Enter visual block mode" },
+        { "command": [":m .+1"], "description": "Move the current line down" },
+        { "command": [":m .-2"], "description": "Move the current line up" }
+    ]
+}
