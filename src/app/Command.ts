@@ -3,8 +3,11 @@ export interface Command {
     description: string;
 }
 
-export interface Commands {
-    general_commands: Command[];
-    movement_commands: Command[];
-    editing_commands: Command[];
+export interface CommandSet {
+    name: string;
+    commands: Command[];
+}
+
+export interface CommandDictionary {
+    sets: CommandSet[];
 }

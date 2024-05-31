@@ -21,5 +21,12 @@ export class QuizComponent {
     console.log(this.current);
   }
 
-  
+  toggleCategory(category: number): void {
+    if ((this.commandService.categoryInSet(category))) {
+      this.commandService.removeCategory(category);
+    }
+    else {
+      this.commandService.addCategory(category);
+    }
+  }
 }
