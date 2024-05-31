@@ -41,9 +41,7 @@ export class CommandService {
       this.set_size += this.command_dictionary.sets[category].commands.length;
 
       // Log for debugging
-      console.log(`Added: ${category}`);
-      console.log(`Current set: ${this.category_set}`);
-      console.log(`Set size: ${this.set_size}`);
+      console.log(`Added: ${category}, Current set: ${this.category_set}, Set size: ${this.set_size}`);
     }
   }
 
@@ -56,9 +54,7 @@ export class CommandService {
       this.set_size -= this.command_dictionary.sets[category].commands.length;
 
       // Log for debugging
-      console.log(`Removed: ${category}`);
-      console.log(`Current set: ${this.category_set}`);
-      console.log(`Set size: ${this.set_size}`);
+      console.log(`Removed: ${category}, Current set: ${this.category_set}, Set size: ${this.set_size}`);
     }
   }
 
@@ -66,10 +62,29 @@ export class CommandService {
     // Grab the first command defined as a placeholder value
     let newCommand: Command = this.command_dictionary.sets[0].commands[0];
 
-    // Loop through our category set
-    for (let i = 0; i < this.category_set.length; i++) {
+    // Get random index
+    let index: number = Math.floor(Math.random() * this.set_size);
+    console.log(`Index: ${index}`);
+
+    // Loop through our category set to find index
+    for (let i = 0; index > 0; i++) {
       let category: Category = this.category_set[i];
-      let command_set_size: number = this.command_dictionary.sets[category].commands.length;
+      let command_set: CommandSet = this.command_dictionary.sets[category];
+      let command_set_size: number = command_set.commands.length;
+
+      // If our index falls within the current set 
+      if (command_set_size > index) {
+        // Grab our newCommand
+        newCommand = command_set.commands[index];
+        
+        // End the loop
+        index = 0;
+      } 
+      else 
+      {
+        // Otherwise, our index is in a later set, continue
+        index -= command_set_size;
+      }
     }
     return newCommand;
   }
