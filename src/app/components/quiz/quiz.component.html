@@ -1,4 +1,8 @@
 <app-button text="Next" color="green" (clicked)="getNext()"></app-button>
-<app-button text="General" color="blue" (clicked)="toggleCategory(0)"></app-button>
-<app-button text="Movement" color="blue" (clicked)="toggleCategory(1)"></app-button>
-<app-button text="Editing" color="blue" (clicked)="toggleCategory(2)"></app-button>
+@for (category of this.commandService.category_set; track category.name) {
+    <app-button 
+        text="Editing" 
+        color="{{ this.commandService.categoryEnabled($index) ? 'blue' : 'red' }}" 
+        (clicked)="toggleCategory($index)"
+    ></app-button>
+}

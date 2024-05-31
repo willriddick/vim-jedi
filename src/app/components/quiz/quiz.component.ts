@@ -14,7 +14,7 @@ export class QuizComponent {
 
   current!: Command;
 
-  constructor(private commandService: CommandService) {}
+  constructor(public commandService: CommandService) {}
 
   getNext(): void {
     this.current = this.commandService.getRandomCommand();
@@ -22,7 +22,7 @@ export class QuizComponent {
   }
 
   toggleCategory(category: number): void {
-    if ((this.commandService.categoryInSet(category))) {
+    if ((this.commandService.categoryEnabled(category))) {
       this.commandService.removeCategory(category);
     }
     else {
