@@ -10,9 +10,8 @@ import { Component } from '@angular/core';
 export class FooterComponent {
   links = [
     {name: "official vim", href: "https://github.com/vim/vim"},
-    {name: "vim commands", href: "https://vim.rtorr.com/"},
-    {name: "github", href: "https://github.com/willriddick"},
-    {name: "itch", href: "https://willriddick.itch.io/"},
-    {name: "linkedin", href: "https://www.linkedin.com/in/will-riddick/"},
+    {name: "my github", href: "https://github.com/willriddick"},
+    {name: "my itch", href: "https://willriddick.itch.io/"},
+    {name: "my linkedin", href: "https://www.linkedin.com/in/will-riddick/"},
   ];
 }
