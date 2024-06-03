@@ -1,8 +1,11 @@
 <footer>
     <div><ul>
         @for (link of links; track link.name) {
-            <li><a href={{link.href}} target="_blank" class="button-1">
-                {{link.name}}
+            <li><a href={{link.href}} target="_blank">
+                <app-button 
+                    text="{{ link.name }}" 
+                    color="gray">
+                </app-button>
             </a></li>
         }
     </ul></div>

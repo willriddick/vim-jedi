@@ -1,3 +1,4 @@
+<div class="container">
 @for (category of this.commandService.category_set; track category.name) {
     <app-button 
         text="{{ category.name }}" 
@@ -11,3 +12,4 @@
 @for (command of this.commandService.getCommands(selected); track command.description) {
     <app-command [command]="command"></app-command>
 }
+</div>
