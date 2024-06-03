@@ -10,6 +10,17 @@ import { Component, Input, output } from '@angular/core';
 export class ButtonComponent {
   @Input({required: true}) text: string = "default";
   @Input({required: true}) color: string = "black";
+  @Input() enabled: boolean = false;
+  @Input() enabled_color: string = this.color;
+
+  getColor(): string {
+    if (!this.enabled) {
+      return this.color;
+    } else {
+      return this.enabled_color
+    }
+  }
+
   clicked = output();
 
   onClick(): void {

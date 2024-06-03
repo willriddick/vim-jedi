@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Command, CommandSet, CommandDictionary } from '../Command';
+import { Command, CommandSet, CommandDictionary } from '../command.model';
 
 enum Category {
   general,
@@ -68,8 +68,16 @@ export class CommandService {
   }
 
   getRandomCommand(): Command {
-    // Grab the first command defined as a placeholder value
-    let newCommand: Command = this.command_dictionary.sets[0].commands[0];
+    // Create a null command as a placeholder
+    let newCommand: Command = {
+      command: ["NA"],
+      description: "NA"
+    }
+
+    // If there are no sets selected, return the null command
+    if (this.set_size <= 0) {
+      return newCommand;
+    }
 
     // Get random index, making sure not to get the previous one
     let index: number = this.getRandomNumber(this.set_size);

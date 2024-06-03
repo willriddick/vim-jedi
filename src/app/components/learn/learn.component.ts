@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { CommandService } from '../../services/command.service';
-import { Command } from '../../Command';
 import { ButtonComponent } from '../button/button.component';
 import { CommandComponent } from '../command/command.component';
 
@@ -14,8 +13,6 @@ import { CommandComponent } from '../command/command.component';
 export class LearnComponent {
 
   selected: number = 0;
-  enabled_color: string = 'green';
-  disabled_color: string = 'orange';
 
   constructor(public commandService: CommandService) {}
 

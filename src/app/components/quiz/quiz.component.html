@@ -1,15 +1,17 @@
 <app-button 
     text="New Command" 
-    color="blue" 
+    color="blue"
     (clicked)="getNext()"
-></app-button>
+/>
 
 @for (category of this.commandService.category_set; track category.name) {
     <app-button 
         text="{{ category.name }}" 
-        color="{{ this.commandService.categoryEnabled($index) ? enabled_color : disabled_color }}" 
+        color="gray"
+        enabled_color="green"
+        [enabled]="this.commandService.categoryEnabled($index)"
         (clicked)="toggleCategory($index)"
-    ></app-button>
+    />
 }
 
 <h1>

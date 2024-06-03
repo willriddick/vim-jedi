@@ -1,6 +1,6 @@
 import { Component, HostListener } from '@angular/core';
 import { CommandService } from '../../services/command.service';
-import { Command } from '../../Command';
+import { Command } from '../../command.model';
 import { ButtonComponent } from '../button/button.component';
 import { CommandComponent } from '../command/command.component';
 
@@ -17,9 +17,6 @@ export class QuizComponent {
 
   input_string: string = "";
   input_array: string[] = [];
-
-  enabled_color: string = 'green';
-  disabled_color: string = 'orange';
 
   constructor(public commandService: CommandService) {}
 

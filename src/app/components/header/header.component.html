@@ -2,8 +2,15 @@
     <h1>{{ title }}</h1>
     <nav>
         <ul>
-            <li><a routerLink="/quiz" routerLinkActive="active" ariaCurrentWhenActive="page">Quiz</a></li>
-            <li><a routerLink="/learn" routerLinkActive="active" ariaCurrentWhenActive="page">Learn</a></li>
+            @for (link of links; track link.name) {
+                <li><app-button 
+                    text="{{ link.name }}" 
+                    color="gray" 
+                    enabled_color="green"
+                    [enabled]="isEnabled(link.link)"
+                    (clicked)="routeTo(link.link)">
+                </app-button></li>
+            }
         </ul>
     </nav>
 </header>

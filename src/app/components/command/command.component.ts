@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Command } from '../../Command';
+import { Command } from '../../command.model';
 
 @Component({
   selector: 'app-command',
