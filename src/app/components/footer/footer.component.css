@@ -13,15 +13,17 @@ footer {
   bottom: 0;
 }
 
-footer ul {
+ul {
+  margin-top: 2%;
+  margin-bottom: 2%;
   list-style: none;
   padding: 0;
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 10px;
+  flex-direction: row;
+  gap: 15px;
 }
 
-footer li {
+li {
   display: inline;
+  margin: 5px;
 }

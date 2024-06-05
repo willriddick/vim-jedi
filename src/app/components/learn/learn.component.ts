@@ -1,12 +1,11 @@
 import { Component } from '@angular/core';
 import { CommandService } from '../../services/command.service';
-import { ButtonComponent } from '../button/button.component';
 import { CommandComponent } from '../command/command.component';
 
 @Component({
   selector: 'app-learn',
   standalone: true,
-  imports: [ButtonComponent, CommandComponent],
+  imports: [CommandComponent],
   templateUrl: './learn.component.html',
   styleUrl: './learn.component.css'
 })

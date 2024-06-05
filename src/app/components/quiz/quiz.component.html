@@ -1,23 +1,33 @@
-<div class="container">
-<app-button 
-    text="New Command" 
-    color="blue"
-    (clicked)="getNext()"
-/>
+<div class="main-container">
 
-@for (category of this.commandService.category_set; track category.name) {
-    <app-button 
-        text="{{ category.name }}" 
-        color="gray"
-        enabled_color="green"
-        [enabled]="this.commandService.categoryEnabled($index)"
-        (clicked)="toggleCategory($index)"
-    />
-}
+<div class="categories">
+    <h2>Select at least one category to quiz</h2>
+    <div class="categories.buttons">
+        @for (category of this.commandService.category_set; track category.name) {
+            <button 
+                class="button1"
+                [class]="{'toggled': this.commandService.categoryEnabled($index)}"
+                (click)="toggleCategory($index)"
+            >{{ category.name }}</button>
+        }
+    </div>
+</div>
+
+<button
+    class="button1"
+    (click)="getNext()"
+>New Command</button>
+
+<div>
+    @if (this.current_command) {
+        <h1>
+            {{ this.current_command.description }}
+        </h1>
+    }
+</div>
 
 <h1>
     {{ input_string }}
 </h1>
 
-<app-command [command]="this.current_command"></app-command>
 </div>
