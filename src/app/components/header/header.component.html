@@ -1,14 +1,27 @@
 <header>
-    <h1>{{ title }}</h1>
-    <nav>
+    <h1 class="title">{{ title }}</h1>
+
+    <nav class="routes">
         <ul>
-            @for (link of links; track link.name) {
+            @for (route of routes; track route.name) {
                 <li><a 
-                    [routerLink]="link.link"
+                    class="route"
+                    [routerLink]="route.link"
                     routerLinkActive="active"
                     [routerLinkActiveOptions]="{exact: true}"
-                >{{ link.name }}</a></li>
+                >{{ route.name }}</a></li>
             }
+            
         </ul>
     </nav>
+
+    <nav class="links">
+        <ul>
+            @for (link of links; track link.name) {
+                <li><a class="link" href={{link.href}} target="_blank">
+                    {{ link.name }}
+                </a></li>
+            }
+        </ul>   
+    </nav>  
 </header>

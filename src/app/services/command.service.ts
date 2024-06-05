@@ -28,7 +28,6 @@ export class CommandService {
     this.http.get<CommandDictionary>(this.dataUrl)
     .subscribe((response) => {
       this.command_dictionary = response;
-      this.addCategory(0);
     });
   }
 
@@ -68,7 +67,6 @@ export class CommandService {
       command: ["NA"],
       description: "NA"
     }
-    console.log("Set size: " + this.set_size);
 
     // If there are no sets selected, return the null command
     if (this.set_size <= 0) {
@@ -88,8 +86,6 @@ export class CommandService {
       if (this.categoryEnabled(i)) {
         let command_set: CommandSet = this.command_dictionary.sets[i];
         let command_set_size: number = command_set.commands.length;
-        console.log("Index: " + index);
-        console.log("Category: " + i + ", Set size: " + command_set_size);
 
         // If our index falls within the current set 
         if (command_set_size > index) {

@@ -10,10 +10,17 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
   styleUrl: './header.component.css'
 })
 export class HeaderComponent {
-  title: string = "Vim Quiz";
+  title: string = "Vim Jedi";
+
+  routes = [
+    {name: "Quiz", link: "/quiz"},
+    {name: "Learn", link: "/learn"},
+  ];
 
   links = [
-    {name: "Quiz", link: "/quiz"},
-    {name: "Learn", link: "/learn"}
+    {name: "github", href: "https://github.com/willriddick"},
+    {name: "linkedin", href: "https://www.linkedin.com/in/will-riddick/"},
+    {name: "itch.io", href: "https://willriddick.itch.io/"},
+    {name: "official vim", href: "https://github.com/vim/vim"},
   ];
 }

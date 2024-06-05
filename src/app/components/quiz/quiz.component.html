@@ -15,10 +15,10 @@
 
 <button
     class="button1"
-    (click)="getNext()"
+    (click)="this.getNext()"
 >New Command</button>
 
-<div>
+<div class="categories">
     @if (this.current_command) {
         <h1>
             {{ this.current_command.description }}

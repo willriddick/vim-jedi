@@ -12,7 +12,7 @@ import { CommandComponent } from '../command/command.component';
 })
 export class QuizComponent {
 
-  current_command!: Command;
+  public current_command!: Command;
 
   input_array: string[] = [];
 
@@ -20,7 +20,6 @@ export class QuizComponent {
 
   getNext(): void {
     this.current_command = this.commandService.getRandomCommand();
-    console.log(this.current_command);
   }
 
   toggleCategory(category: number): void {

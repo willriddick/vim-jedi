@@ -2,17 +2,30 @@ header {
   background-color: #333;
   color: #fff;
   padding: 3px 20% 3px 20%;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-auto-rows: 1fr;
   align-items: center;
   overflow: hidden;
   width: 100%;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-h1 {
-  font-size: 2em;
+.title {
+  font-size: 2.25em;
+  text-align: left;
+}
+
+.routes {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.links {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
 }
 
 ul {
@@ -20,11 +33,44 @@ ul {
   padding: 0;
   display: flex;
   flex-direction: row;
-  gap: 15px;
 }
 
 li {
   display: inline;
-  margin: 5px;
+  margin: 2px;
 }
 
+.route {
+  color: #fff;
+  text-decoration: none;
+  padding: 6px 12px;
+  border-radius: 7px;
+  margin: 5px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  text-align: center;
+  text-overflow: ellipsis;
+  font-size: 1.2em;
+}
+
+.route:hover {
+  background-color: #555;
+}
+
+.route.active {
+  color: aquamarine;
+}
+
+.link {
+  overflow: hidden;
+  color: #919191;
+  text-decoration: none;
+  margin: 5px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  text-align: right;
+  text-overflow: ellipsis;
+  font-size: 1em;
+}
+
+.link:hover {
+  color: rgb(255, 255, 255);
+}
