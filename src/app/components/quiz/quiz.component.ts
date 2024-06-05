@@ -38,12 +38,12 @@ export class QuizComponent {
   }
 
   @HostListener('document:keydown.control', ['$event']) 
-  onControlHandler(event: KeyboardEvent) {
+  onControlHandler(_event: KeyboardEvent) {
     this.input_array.push("Ctrl + ");
   }
 
   @HostListener('document:keydown.backspace', ['$event']) 
-  onBackspaceHandler(event: KeyboardEvent) {
+  onBackspaceHandler(_event: KeyboardEvent) {
     this.input_array.pop();
   }
 
