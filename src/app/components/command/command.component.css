@@ -8,6 +8,14 @@
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); 
 }
 
+.correct {
+  border-color: green;
+}
+
+.incorrect {
+  border-color: red;
+}
+
 .commands {
   color: #333;
   margin-bottom: 10px; 
@@ -32,3 +40,4 @@
   color: #555;
   margin-top: 5px; 
 }
+

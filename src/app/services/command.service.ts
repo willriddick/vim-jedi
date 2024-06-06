@@ -48,7 +48,7 @@ export class CommandService {
 
   removeCategory(category: number): void {
     // If this category is in the set, filter it out
-    if (this.categoryEnabled(category) && this.categories_enabled > 1) {
+    if (this.categoryEnabled(category)) {
       this.category_set[category].enabled = false;
     
       // Remove the number of commands in this category from our set size

@@ -13,9 +13,10 @@ import { CommandComponent } from '../command/command.component';
 export class QuizComponent {
 
   input_array: string[] = [];
+  score: number = 0;
 
   current_command?: Command;
-  private commands_quizzed: {command: Command, correct: boolean}[] = [];
+  commands_quizzed: {command: Command, correct: boolean}[] = [];
 
   quiz_lengths: number[] = [10,30,60];
   timer: number = 0;
@@ -35,11 +36,15 @@ export class QuizComponent {
 
   startQuiz(length: number) {
     this.started = true;
-    this.startTimer(length);
+    this.score = 0;
+    this.input_array = [];
+    this.commands_quizzed = [];
     this.getNewCommand()
+    this.startTimer(length);
   }
 
   endQuiz(): void {
+    this.timer = 0;
     this.started = false;
     if (this.interval_id) {
       clearInterval(this.interval_id);
@@ -80,18 +85,77 @@ export class QuizComponent {
     }
   }
 
+
+  checkAnswer(): void {
+    if (this.current_command) {
+      for (let cmd of this.current_command.command) {
+        if (cmd === this.input_string) {
+          this.correct(); 
+          return;
+        }
+      }
+    }
+  }
+
+  correct(): void {
+    this.score++;
+    this.input_array = [];
+
+    if (this.current_command) {
+      this.commands_quizzed.push({
+        command: this.current_command,
+        correct: true,
+      })
+    }
+
+    this.getNewCommand();
+  }
+
+  skip(): void {
+    this.input_array = [];
+
+    if (this.current_command) {
+      this.commands_quizzed.push({
+        command: this.current_command,
+        correct: false,
+      })
+    }
+
+    this.getNewCommand();
+  }
+
+
+
+  @HostListener('document:keydown.enter', ['$event']) 
+  onTabHandler(_event: KeyboardEvent) {
+    if (this.started) {
+      this.skip();
+    }
+  }
+
   @HostListener('document:keypress', ['$event'])
   handleKeyboardEvent(event: KeyboardEvent) { 
-    this.input_array.push(event.key);
+    if (this.started) {
+      if (event.key !== "Enter") {
+        this.input_array.push(event.key);
+        this.checkAnswer()
+      }
+    }
   }
 
   @HostListener('document:keydown.control', ['$event']) 
   onControlHandler(_event: KeyboardEvent) {
-    this.input_array.push("Ctrl + ");
+    if (this.started) {
+      this.input_array.push("Ctrl + ");
+      this.checkAnswer()
+    }
   }
 
   @HostListener('document:keydown.backspace', ['$event']) 
   onBackspaceHandler(_event: KeyboardEvent) {
-    this.input_array.pop();
+    if (this.started) {
+      this.input_array.pop();
+      this.checkAnswer()
+    }
   }
 }
