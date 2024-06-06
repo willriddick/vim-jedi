@@ -11,7 +11,7 @@ export class CommandService {
   private command_dictionary!: CommandDictionary;
   private set_size: number = 0;
   private previous_index: number = -1;
-  private categories_enabled: number = 0;
+  categories_enabled: number = 0;
 
   public category_set = [
     { name: "Global", enabled: false },

@@ -20,7 +20,7 @@ export class HeaderComponent {
   links = [
     {name: "github", href: "https://github.com/willriddick"},
     {name: "linkedin", href: "https://www.linkedin.com/in/will-riddick/"},
-    {name: "itch.io", href: "https://willriddick.itch.io/"},
-    {name: "official vim", href: "https://github.com/vim/vim"},
+    {name: "itch", href: "https://willriddick.itch.io/"},
+    {name: "official", href: "https://github.com/vim/vim"},
   ];
 }

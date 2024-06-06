@@ -1,33 +1,59 @@
 <div class="main-container">
 
-<div class="categories">
-    <h2>Select at least one category to quiz</h2>
-    <div class="categories.buttons">
+<div class="container">
+    <h2>{{ prompt }}</h2>
+
+    <div class="buttons">
         @for (category of this.commandService.category_set; track category.name) {
             <button 
                 class="button1"
                 [class]="{'toggled': this.commandService.categoryEnabled($index)}"
                 (click)="toggleCategory($index)"
+                [disabled]="started"
             >{{ category.name }}</button>
         }
     </div>
 </div>
 
-<button
-    class="button1"
-    (click)="this.getNext()"
->New Command</button>
 
-<div class="categories">
-    @if (this.current_command) {
-        <h1>
-            {{ this.current_command.description }}
-        </h1>
-    }
+<div class="container">
+    <div class="buttons">
+        @for (length of quiz_lengths; track $index) {
+            <button
+                class="button1"
+                (click)="this.startQuiz(length)"
+                [disabled]="canStart() === false"
+            >Start {{ length }}</button>
+        }
+        
+    </div>
 </div>
 
-<h1>
-    {{ input_string }}
-</h1>
+@if (started) {
+    <div class="container">
+        <h2 class="timer" [class.low]="timer <= 3">{{ timer }}</h2>
+        <button
+            class="button1"
+            (click)="this.endQuiz()"
+            [disabled]="!started"
+            >Cancel</button>
+    </div>
+}
+
+@if (current_command !== undefined) {
+    <div class="container">
+        @if (this.current_command) {
+            <h1>
+                {{ this.current_command.description }}
+            </h1>
+        }
+    </div>
+}
+
+@if (input_string !== "") {
+    <div class="container">
+        <h1>{{ input_string }}</h1>
+    </div>
+}
 
 </div>
