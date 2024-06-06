@@ -12,14 +12,6 @@ import { CommandComponent } from '../command/command.component';
 })
 export class QuizComponent {
 
-  get prompt(): string {
-    if (this.numberCategoriesSelected() === 0) {
-      return "Select a category to begin...";
-    }
-    if (this.started) return "GO GO GO";
-    return "Select more if you like...";
-  }
-
   input_array: string[] = [];
 
   current_command?: Command;
