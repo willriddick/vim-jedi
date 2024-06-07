@@ -10,4 +10,5 @@ import { Command } from '../../command.model';
 })
 export class CommandComponent {
   @Input() command!: Command;
+  @Input() color?: string;
 }

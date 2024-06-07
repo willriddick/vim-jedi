@@ -8,14 +8,6 @@
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); 
 }
 
-.correct {
-  border-color: green;
-}
-
-.incorrect {
-  border-color: red;
-}
-
 .commands {
   color: #333;
   margin-bottom: 10px; 
@@ -32,7 +24,7 @@
 }
 
 .command-container:hover {
-  border-color: #555; 
+  transform: scale(0.98);
 }
 
 .description {
@@ -41,3 +33,10 @@
   margin-top: 5px; 
 }
 
+.correct {
+  border-color: green;
+}
+
+.incorrect {
+  border-color: red;
+}

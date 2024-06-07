@@ -13,12 +13,10 @@
             >{{ category.name }}</button>
         }
     </div>
-</div>
 
-<div class="container">
-    @if (numberCategoriesSelected() === 0) {
-        <h2>Select one or <em>more</em> categories to start</h2>
-    }
+    <h1>Time Left: <span class="timer" [class.low]="timer <= 5 && timer > 0">{{ timer }}</span></h1>
+
+    <h1>Score: <span>{{ score }}</span></h1>
 
     <div class="buttons">
         @for (length of quiz_lengths; track $index) {
@@ -35,9 +33,9 @@
             >Cancel</button>
     </div>
 
-    <h1>Time Left: <span class="timer" [class.low]="timer <= 5 && timer > 0">{{ timer }}</span></h1>
-
-    <h1>Score: <span>{{ score }}</span></h1>
+    @if (numberCategoriesSelected() === 0) {
+        <h3>Select one or <em>more</em> categories to start</h3>
+    }
 </div>
 
 @if (current_command !== undefined) {
@@ -49,20 +47,27 @@
     </div>
 }
 
-@if (input_string !== "") {
+@if (started) {
     <div class="container">
-        <h1>{{ input_string }}</h1>
+        @if (input_string === "") {
+            <h1>...</h1>
+        } @else {
+            <h1>{{ input_string }}</h1>
+        }
     </div>
 }
 
-@if (commands_quizzed.length !== 0) {
+@if (commands_quizzed.length !== 0 && started === false) {
     <div class="container">
-        @for (cmd of commands_quizzed; track $index) {
-            <app-command 
-                [class.correct]="cmd.correct" 
-                [command]="cmd.command"
-            ></app-command>
-        }
+        <h1>Previous Quiz</h1>
+        <div class="quizzed">
+            @for (cmd of commands_quizzed; track $index) {
+                <app-command 
+                    [command] = "cmd.command"
+                    [color]="cmd.correct ? 'green' : 'red'"
+                ></app-command>
+            }
+        </div>
     </div>
 }
 

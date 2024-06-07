@@ -1,4 +1,4 @@
-<div class="command-container">
+<div class="command-container" [style]="{'border-color': color}">
   <div class="commands">
     @for (cmd of command.command; track command.description) {
         <span class="command">{{ cmd }}</span>
