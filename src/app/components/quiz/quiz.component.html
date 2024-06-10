@@ -60,6 +60,8 @@
 @if (commands_quizzed.length !== 0 && started === false) {
     <div class="container">
         <h1>Previous Quiz</h1>
+        <h2>Length: {{ previous_length }} seconds</h2>
+        <h2>Score: {{ previous_score }}</h2>
         <div class="quizzed">
             @for (cmd of commands_quizzed; track $index) {
                 <app-command 

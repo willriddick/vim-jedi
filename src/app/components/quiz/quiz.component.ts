@@ -15,6 +15,9 @@ export class QuizComponent {
   input_array: string[] = [];
   score: number = 0;
 
+  previous_score: number = 0;
+  previous_length: number = 0;
+
   current_command?: Command;
   commands_quizzed: {command: Command, correct: boolean}[] = [];
 
@@ -39,12 +42,14 @@ export class QuizComponent {
     this.score = 0;
     this.input_array = [];
     this.commands_quizzed = [];
+    this.previous_length = length;
     this.getNewCommand()
     this.startTimer(length);
   }
 
   endQuiz(): void {
     this.timer = 0;
+    this.previous_score = this.score;
     this.started = false;
     if (this.interval_id) {
       clearInterval(this.interval_id);

@@ -21,6 +21,6 @@ export class HeaderComponent {
     {name: "github", href: "https://github.com/willriddick"},
     {name: "linkedin", href: "https://www.linkedin.com/in/will-riddick/"},
     {name: "itch", href: "https://willriddick.itch.io/"},
-    {name: "official", href: "https://github.com/vim/vim"},
+    {name: "vim", href: "https://github.com/vim/vim"},
   ];
 }
