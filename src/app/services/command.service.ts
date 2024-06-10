@@ -2,24 +2,16 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Command, CommandSet, CommandDictionary } from '../command.model';
 
-enum Category {
-  general,
-  movement,
-  editing
-}
-
 @Injectable({
   providedIn: 'root'
 })
 export class CommandService {
 
   private dataUrl = 'commands.json';
-
   private command_dictionary!: CommandDictionary;
-
   private set_size: number = 0;
-
   private previous_index: number = -1;
+  categories_enabled: number = 0;
 
   public category_set = [
     { name: "Global", enabled: false },
@@ -39,26 +31,28 @@ export class CommandService {
     });
   }
 
-  categoryEnabled(category: Category): boolean {
+  categoryEnabled(category: number): boolean {
     return this.category_set[category].enabled;
   }
 
-  addCategory(category: Category): void {
+  addCategory(category: number): void {
     // If this category is not already in the set, add it
     if (!this.categoryEnabled(category)) {
       this.category_set[category].enabled = true;
 
       // Add the number of commands in this category to our set size
+      this.categories_enabled++;
       this.set_size += this.command_dictionary.sets[category].commands.length;
     }
   }
 
-  removeCategory(category: Category): void {
+  removeCategory(category: number): void {
     // If this category is in the set, filter it out
     if (this.categoryEnabled(category)) {
       this.category_set[category].enabled = false;
     
       // Remove the number of commands in this category from our set size
+      this.categories_enabled--;
       this.set_size -= this.command_dictionary.sets[category].commands.length;
     }
   }
@@ -87,7 +81,7 @@ export class CommandService {
     this.previous_index = index;
 
     // Loop through our category set to find index
-    for (let i = 0; index > 0 && i < this.category_set.length; i++) {
+    for (let i = 0; index >= 0 && i < this.category_set.length; i++) {
       // Only consider this category if it is enabled
       if (this.categoryEnabled(i)) {
         let command_set: CommandSet = this.command_dictionary.sets[i];
@@ -97,7 +91,7 @@ export class CommandService {
         if (command_set_size > index) {
           // Grab our newCommand and exit the loop
           newCommand = command_set.commands[index];
-          index = 0;
+          index = -1;
         } 
         else 
         {
@@ -109,7 +103,7 @@ export class CommandService {
     return newCommand;
   }
 
-  getCommands(category: Category): Command[] {
+  getCommands(category: number): Command[] {
     return this.command_dictionary.sets[category].commands 
   }
 }

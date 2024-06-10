@@ -1,26 +1,42 @@
+/* Updated styles for command container */
 .command-container {
-  border: 1px solid #ddd;
+  border: 2px solid #ddd;
   border-radius: 5px;
-  padding: 10px;
-  margin: 10px 0;
-  background-color: #f9f9f9;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 15px;
+  margin: 15px 0;
+  background-color: #ffffff; 
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); 
 }
 
 .commands {
-  font-family: 'Courier New', Courier, monospace;
   color: #333;
-  margin-bottom: 5px;
+  margin-bottom: 10px; 
+  font-weight: 400; 
 }
 
 .command {
   background-color: #e1e1e1;
   border-radius: 3px;
-  padding: 2px 4px;
-  margin-right: 5px;
+  padding: 5px 8px; 
+  margin-right: 10px; 
+  font-size: 1em; 
+  transition: background-color 0.3s ease; 
+}
+
+.command-container:hover {
+  transform: scale(0.98);
 }
 
 .description {
-  font-size: 0.9em;
+  font-size: 1em;
   color: #555;
+  margin-top: 5px; 
+}
+
+.correct {
+  border-color: green;
+}
+
+.incorrect {
+  border-color: red;
 }

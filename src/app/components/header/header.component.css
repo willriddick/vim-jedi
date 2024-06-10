@@ -1,62 +1,76 @@
 header {
   background-color: #333;
   color: #fff;
-  padding: 5px 20% 5px 20%;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
+
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-auto-rows: 1fr;
   align-items: center;
   overflow: hidden;
   width: 100%;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-header h1 {
-  font-size: 2em;
+.title {
+  font-size: 2.4em;
+  text-align: left;
+  text-wrap: nowrap;
 }
 
-nav ul {
+.routes {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.links {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+
+ul {
   list-style: none;
   padding: 0;
   display: flex;
   flex-direction: row;
-  gap: 15px;
 }
 
-nav li {
+li {
   display: inline;
-  margin: 5px;
+  margin: 2px;
 }
 
-nav a {
+.route {
   color: #fff;
   text-decoration: none;
-  padding: 10px;
-  border-radius: 5px;
+  padding: 6px 12px;
+  border-radius: 7px;
+  margin: 5px;
   transition: background-color 0.3s ease, color 0.3s ease;
+  text-align: center;
+  text-overflow: ellipsis;
+  font-size: 1.4em;
 }
 
-nav a:hover {
+.route:hover {
   background-color: #555;
 }
 
-nav a.active {
-  background-color: #555;
-  color: #fff;
+.route.active {
+  color: aquamarine;
 }
 
-a[aria-current="page"] {
-  font-weight: bold;
+.link {
+  overflow: hidden;
+  color: #919191;
+  text-decoration: none;
+  margin: 5px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  text-align: right;
+  text-overflow: ellipsis;
+  font-size: 0.8em;
 }
 
-@media (max-width: 600px) {
-  header {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-  
-  nav ul {
-    flex-direction: column;
-    gap: 10px;
-  }
+.link:hover {
+  color: rgb(255, 255, 255);
 }

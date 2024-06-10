@@ -1,30 +1,26 @@
 import { Component } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
-import { ButtonComponent } from '../button/button.component';
+import { RouterLink, RouterLinkActive } from '@angular/router';
 
 
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [ButtonComponent],
+  imports: [RouterLink, RouterLinkActive],
   templateUrl: './header.component.html',
   styleUrl: './header.component.css'
 })
 export class HeaderComponent {
-  title: string = "Vim Quiz";
+  title: string = "Vim Jedi";
 
-  links = [
+  routes = [
     {name: "Quiz", link: "/quiz"},
-    {name: "Learn", link: "/learn"}
+    {name: "Learn", link: "/learn"},
   ];
 
-  constructor(private route: ActivatedRoute, private router: Router) {}
-
-  routeTo(link: string): void {
-    this.router.navigate([link], { relativeTo: this.route })
-  }
-
-  isEnabled(link: string): boolean {
-    return this.router.url === link;
-  }
+  links = [
+    {name: "github", href: "https://github.com/willriddick"},
+    {name: "linkedin", href: "https://www.linkedin.com/in/will-riddick/"},
+    {name: "itch", href: "https://willriddick.itch.io/"},
+    {name: "vim", href: "https://github.com/vim/vim"},
+  ];
 }

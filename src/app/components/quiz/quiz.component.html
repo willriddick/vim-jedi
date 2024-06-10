@@ -1,21 +1,76 @@
-<app-button 
-    text="New Command" 
-    color="blue"
-    (clicked)="getNext()"
-/>
+<div class="main-container">
 
-@for (category of this.commandService.category_set; track category.name) {
-    <app-button 
-        text="{{ category.name }}" 
-        color="gray"
-        enabled_color="green"
-        [enabled]="this.commandService.categoryEnabled($index)"
-        (clicked)="toggleCategory($index)"
-    />
+<div class="container">
+    <h1>Categories</h1>
+
+    <div class="buttons">
+        @for (category of this.commandService.category_set; track category.name) {
+            <button 
+                class="button1"
+                [class]="{'toggled': this.commandService.categoryEnabled($index)}"
+                (click)="toggleCategory($index)"
+                [disabled]="started"
+            >{{ category.name }}</button>
+        }
+    </div>
+
+    <h1>Time Left: <span class="timer" [class.low]="timer <= 5 && timer > 0">{{ timer }}</span></h1>
+
+    <h1>Score: <span>{{ score }}</span></h1>
+
+    <div class="buttons">
+        @for (length of quiz_lengths; track $index) {
+            <button
+                class="button1"
+                (click)="this.startQuiz(length)"
+                [disabled]="canStart() === false"
+            >Start {{ length }}</button>
+        }
+        <button
+            class="button1"
+            (click)="this.endQuiz()"
+            [disabled]="!started"
+            >Cancel</button>
+    </div>
+
+    @if (numberCategoriesSelected() === 0) {
+        <h3>Select one or <em>more</em> categories to start</h3>
+    }
+</div>
+
+@if (current_command !== undefined) {
+    <div class="container">
+        @if (this.current_command) {
+            <h1>{{ this.current_command.description }}</h1>
+            <h1>{{ this.current_command.command }}</h1>
+        }
+    </div>
 }
 
-<h1>
-    {{ input_string }}
-</h1>
+@if (started) {
+    <div class="container">
+        @if (input_string === "") {
+            <h1>...</h1>
+        } @else {
+            <h1>{{ input_string }}</h1>
+        }
+    </div>
+}
 
-<app-command [command]="this.current_command"></app-command>
+@if (commands_quizzed.length !== 0 && started === false) {
+    <div class="container">
+        <h1>Previous Quiz</h1>
+        <h2>Length: {{ previous_length }} seconds</h2>
+        <h2>Score: {{ previous_score }}</h2>
+        <div class="quizzed">
+            @for (cmd of commands_quizzed; track $index) {
+                <app-command 
+                    [command] = "cmd.command"
+                    [color]="cmd.correct ? 'green' : 'red'"
+                ></app-command>
+            }
+        </div>
+    </div>
+}
+
+</div>

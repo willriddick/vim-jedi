@@ -8,7 +8,7 @@
 
 html {
   overflow-x: hidden;
-  margin-right: calc(-1 * (100vw - 100%)); 
+  margin-right: calc(-1 * (100vw - 100%));
 }
 
 body {
@@ -16,3 +16,65 @@ body {
   background-color: #f4f4f4;
   color: #333;
 }
+
+.main-container {
+  padding: 0px 15% 0px 15%;
+}
+
+
+.container {
+  border-radius: 5px;
+  border: 2px solid #ddd;
+
+  background-color: #ffffff; 
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); 
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+
+  margin-top: 30px;
+  margin-bottom: 30px;
+  padding: 10px;
+}
+
+.buttons {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.button1 {
+  display: inline-block;
+  background-color: #333;
+  color: #fff;
+  border: none;
+  padding: 6px 12px;
+  margin: 5px;
+  border-radius: 7px;
+  cursor: pointer;
+  text-decoration: none;
+  font-size: 17px;
+  font-family: inherit;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.button1:hover {
+  background-color: #555;
+}
+
+.button1:active {
+  transform: scale(0.98);
+}
+
+.button1.toggled {
+  color: aquamarine;
+}
+
+.button1:disabled {
+  background-color: #55555578;  
+}
+
